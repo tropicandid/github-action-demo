@@ -14,8 +14,7 @@ on:
       arg2:
         description: 'The current action run link'
         required: true
-        default: '${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}''
-
+        default: '${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}'
 jobs:
   run-script:
     runs-on: ubuntu-latest
