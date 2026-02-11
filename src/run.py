@@ -21,6 +21,7 @@ def gh_action_triggered_post_call(github_run_url):
         separators=(",", ":"),
         sort_keys=True
     )
+    print(json_payload)
 
     signature = generate_signature_256(json_payload.encode("utf-8"))
     headers = {
