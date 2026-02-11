@@ -3,10 +3,6 @@ name: Trigger POST Request
 on:
   workflow_dispatch:
     inputs:
-      method_name:
-        description: 'The method name to call from src/run.py'
-        required: true
-        default: 'gh_action_triggered_post_call'
       arg1:
         description: 'The current action run link'
         required: true
@@ -31,4 +27,4 @@ jobs:
 
     - name: Run the specified Python method
       run: |
-        python src/run.py ${{ github.event.inputs.method_name }} ${{ github.event.inputs.arg1 }}
+        python src/run.py ${{ github.event.inputs.arg1 }}
