@@ -3,6 +3,7 @@ import sys
 import hmac
 import hashlib
 import datetime as datetime
+import json
 
 POST_URL = "https://b12.io/apply/submission"
 SIGNING_SECRET = "hello-there-from-b12"
@@ -10,25 +11,26 @@ SIGNING_SECRET = "hello-there-from-b12"
 def gh_action_triggered_post_call(github_run_url):
     print(f"Run Url: {github_run_url}")
     
-    payload = {
+    json_payload = json.dumps( {
         "timestamp": datetime.datetime.now().isoformat(),
         "name": "Deanna Steers",
         "email": "deanna.steers@gmail.com",
         "resume_link": "https://deannasteers.com/static/docs/DeannaSteers_CV.pdf",
         "repository_link": "https://github.com/tropicandid/github-action-demo",
         "action_run_link": github_run_url
-    }
+        },
+        separators=(",", ":"),  # removes spaces
+        sort_keys=True  # consistent ordering
+    )
 
-    signature = generate_signature_256(str(payload).encode("utf-8"))
-
+    signature = generate_signature_256(json_payload.encode("utf-8"))
     headers = {
         "Content-Type": "application/json",
-        "X-Signature-256": signature,
-        "User-Agent":"Mozilla/5.0"  
+        "X-Signature-256": signature
     }
 
     try:
-        response = requests.post(POST_URL, json=payload, headers=headers)
+        response = requests.post(POST_URL, data=json_payload, headers=headers)
         response.raise_for_status() 
         print(response.json())
         return response.json()  
