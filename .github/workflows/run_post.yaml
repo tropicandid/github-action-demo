@@ -8,10 +8,6 @@ on:
         required: true
         default: 'gh_action_triggered_post_call'
       arg1:
-        description: 'Timestamp argument for the method'
-        required: true
-        default: '<FILL ME IN>'
-      arg2:
         description: 'The current action run link'
         required: true
         default: '${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}'
@@ -35,4 +31,4 @@ jobs:
 
     - name: Run the specified Python method
       run: |
-        python src/run.py ${{ github.event.inputs.method_name }} ${{ github.event.inputs.arg1 }} ${{ github.event.inputs.arg2 }}
+        python src/run.py ${{ github.event.inputs.method_name }} ${{ github.event.inputs.arg1 }}
