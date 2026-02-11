@@ -6,4 +6,4 @@ This repo houses just a single github action to demonstrate proficiency.
 2. Script performs encoding and formatting of payload and header attrs and submits post request.
 
 ### Instructions
-If you came here and took a look, please commend your favorite flavor of Ice cream in the issues. :D
+If you came here and took a look, please comment your favorite flavor of Ice cream in the issues. :D
