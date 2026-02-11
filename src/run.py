@@ -12,12 +12,12 @@ def gh_action_triggered_post_call(github_run_url):
     print(f"Run Url: {github_run_url}")
     
     json_payload = json.dumps( {
-        "timestamp": datetime.datetime.now().isoformat(),
-        "name": "Deanna Steers",
+        "action_run_link": github_run_url,
         "email": "deanna.steers@gmail.com",
+        "name": "Deanna Steers",
         "resume_link": "https://deannasteers.com/static/docs/DeannaSteers_CV.pdf",
         "repository_link": "https://github.com/tropicandid/github-action-demo",
-        "action_run_link": github_run_url
+        "timestamp": datetime.datetime.now().isoformat(),
         },
         separators=(",", ":"),  # removes spaces
         sort_keys=True  # consistent ordering
