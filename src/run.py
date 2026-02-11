@@ -8,9 +8,10 @@ POST_URL = "https://b12.io/apply/submission"
 SIGNING_SECRET = "hello-there-from-b12"
 
 def gh_action_triggered_post_call(github_run_url):
+    print(datetime.datetime.now())
     
     payload = {
-        "timestamp": datetime.datetime.now(),
+        "timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "name": "Deanna Steers",
         "email": "deanna.steers@gmail.com",
         "resume_link": "https://deannasteers.com/static/docs/DeannaSteers_CV.pdf",
@@ -52,6 +53,6 @@ if __name__ == "__main__":
         print("Usage: Insufficient arguments provided. Please provide a run URL.")
         sys.exit(1)
 
-    run_url = sys.argv[2]
+    run_url = sys.argv[1]
     gh_action_triggered_post_call(run_url)
 
